@@ -113,14 +113,14 @@ void Chip8::LoadROM(char const* filename){
 }
 
 void Chip8::Cycle(){
-    // Fetch
+    
     opcode = (memory[pc] << 8u) | memory[pc + 1];
     pc += 2;
 
-    // Decode + Execute
+    
     (this->*table[(opcode & 0xF000u) >> 12u])();
 
-    // Timers
+    
     if (delayTimer > 0) --delayTimer;
     if (soundTimer > 0) --soundTimer;
 }
@@ -315,7 +315,7 @@ void Chip8::OP_Dxyn() {
     uint8_t xPos = registers[Vx] % VIDEO_WIDTH;
     uint8_t yPos = registers[Vy] % VIDEO_HEIGHT;
 
-    registers[0xF] = 0; // Reset collision flag
+    registers[0xF] = 0; 
 
     for (unsigned int row = 0; row < height; ++row) {
         uint8_t spriteByte = memory[idx + row];
@@ -351,7 +351,6 @@ void Chip8::OP_ExA1(){
         pc += 2;
     }
 }
-
 
 void Chip8::OP_Fx07 (){
     uint8_t Vx = (opcode & 0x0F00u) >> 8u;

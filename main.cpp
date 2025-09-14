@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
     Platform platform("CHIP-8 Emulator", VIDEO_WIDTH * 10, VIDEO_HEIGHT * 10, VIDEO_WIDTH, VIDEO_HEIGHT);
 
     const int CYCLES_PER_FRAME = 10; // number of Chip8 cycles per frame
-    const int FRAME_DELAY_MS = 16;   // ~60 FPS
+    const int FRAME_DELAY_MS = 16;   
 
     bool quit = false;
     while (!quit) {
